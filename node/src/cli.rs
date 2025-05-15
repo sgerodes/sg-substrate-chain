@@ -1,10 +1,12 @@
+use sc_cli::RunCmd;
+
 #[derive(Debug, clap::Parser)]
 pub struct Cli {
 	#[command(subcommand)]
 	pub subcommand: Option<Subcommand>,
 
 	#[clap(flatten)]
-	pub run: sc_cli::RunCmd,
+	pub run: RunCmd,
 }
 
 #[derive(Debug, clap::Subcommand)]
@@ -15,15 +17,7 @@ pub enum Subcommand {
 	Key(sc_cli::KeySubcommand),
 
 	/// Build a chain specification.
-	/// DEPRECATED: `build-spec` command will be removed after 1/04/2026. Use `export-chain-spec`
-	/// command instead.
-	#[deprecated(
-		note = "build-spec command will be removed after 1/04/2026. Use export-chain-spec command instead"
-	)]
 	BuildSpec(sc_cli::BuildSpecCmd),
-
-	/// Export the chain specification.
-	ExportChainSpec(sc_cli::ExportChainSpecCmd),
 
 	/// Validate blocks.
 	CheckBlock(sc_cli::CheckBlockCmd),
