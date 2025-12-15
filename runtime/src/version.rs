@@ -1,7 +1,7 @@
 #[cfg(feature = "std")]
-use crate::sp_version::NativeVersion;
-use crate::sp_version::RuntimeVersion;
-pub use crate::apis::RUNTIME_API_VERSIONS;
+use sp_version::NativeVersion;
+use sp_version::RuntimeVersion;
+use crate::apis;
 
 // To learn more about runtime versioning, see:
 // https://docs.substrate.io/main-docs/build/upgrade#runtime-versioning
@@ -24,6 +24,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 
 /// The version information used to identify this runtime when compiled natively.
 #[cfg(feature = "std")]
+#[allow(dead_code)]
 pub fn native_version() -> NativeVersion {
     NativeVersion { runtime_version: VERSION, can_author_with: Default::default() }
 }
