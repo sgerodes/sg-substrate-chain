@@ -9,6 +9,7 @@ version = "0.1.0"
 authors = [ "Sergey Gerodes <https://sergeygerodes.xyz>"]
 repository = "https://github.com/sgerodes/sg-substrate-chain"
 homepage = "https://github.com/sgerodes/sg-substrate-chain"
+license = "Unlicense"
 edition = "2021"
 rust-version = "1.88.0"
 
@@ -43,7 +44,7 @@ zero-prefixed-literal = { level = "allow", priority = 2 }            # 00_1000_0
 
 
 [workspace.dependencies]
-#network_constants = { path = "network_constants", default-features = false }
+network_constants = { path = "network_constants", default-features = false }
 sg-solochain-runtime = { path = "./runtime" }
 #sg-solochain-node = { path = "./node" }
 

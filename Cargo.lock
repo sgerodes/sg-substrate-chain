@@ -5673,6 +5673,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "network_constants"
+version = "0.1.0"
+
+[[package]]
 name = "nix"
 version = "0.26.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -9218,6 +9222,7 @@ dependencies = [
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
+ "network_constants",
  "pallet-aura",
  "pallet-balances",
  "pallet-grandpa",

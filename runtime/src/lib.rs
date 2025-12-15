@@ -64,7 +64,7 @@ mod block_times {
 	/// slot_duration()`.
 	///
 	/// Change this to adjust the block time.
-	pub const MILLI_SECS_PER_BLOCK: u64 = 6000;
+	pub const MILLI_SECS_PER_BLOCK: u64 = network_constants::MILLI_SECS_PER_BLOCK;
 
 	// NOTE: Currently it is not possible to change the slot duration after the chain has started.
 	// Attempting to do so will brick block production.
@@ -80,12 +80,12 @@ pub const DAYS: BlockNumber = HOURS * 24;
 pub const BLOCK_HASH_COUNT: BlockNumber = 2400;
 
 // Unit = the base number of indivisible units for balances
-pub const UNIT: Balance = 1_000_000_000_000;
-pub const MILLI_UNIT: Balance = 1_000_000_000;
-pub const MICRO_UNIT: Balance = 1_000_000;
+pub const UNIT: Balance = network_constants::UNIT;
+pub const MILLI_UNIT: Balance = UNIT/1000;
+pub const MICRO_UNIT: Balance = UNIT/1_000_000;
 
 /// Existential deposit.
-pub const EXISTENTIAL_DEPOSIT: Balance = MILLI_UNIT;
+pub const EXISTENTIAL_DEPOSIT: Balance = network_constants::EXISTENTIAL_DEPOSIT;
 
 
 
