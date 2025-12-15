@@ -3,6 +3,8 @@ members = ["node", "pallets/template", "runtime"]
 resolver = "2"
 
 [workspace.package]
+#name = "sg-solochain"
+description = "A clean solochain template."
 version = "0.1.0"
 authors = [ "Sergey Gerodes <https://sergeygerodes.xyz>"]
 repository = "https://github.com/sgerodes/sg-substrate-chain"
@@ -42,8 +44,8 @@ zero-prefixed-literal = { level = "allow", priority = 2 }            # 00_1000_0
 
 [workspace.dependencies]
 #network_constants = { path = "network_constants", default-features = false }
-solochain-template-runtime = { path = "./runtime" }
-# sg-node = { path = "./node" }
+sg-solochain-runtime = { path = "./runtime" }
+#sg-solochain-node = { path = "./node" }
 
 pallet-template = { path = "./pallets/template", default-features = false }
 
