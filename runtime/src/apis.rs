@@ -26,7 +26,7 @@
 // External crates imports
 use polkadot_sdk::*;
 use alloc::vec::Vec;
-use frame_support::{
+use polkadot_sdk::frame_support::{
 	genesis_builder_helper::{build_state, get_preset},
 	weights::Weight,
 };
@@ -289,17 +289,16 @@ impl_runtime_apis! {
 		}
 	}
 
-	#[cfg(feature = "std")]
-	impl sp_genesis_builder::GenesisBuilder<Block> for Runtime {
-		fn build_state(config: Vec<u8>) -> sp_genesis_builder::Result {
+	impl polkadot_sdk::sp_genesis_builder::GenesisBuilder<Block> for Runtime {
+		fn build_state(config: Vec<u8>) -> polkadot_sdk::sp_genesis_builder::Result {
 			build_state::<RuntimeGenesisConfig>(config)
 		}
 
-		fn get_preset(id: &Option<sp_genesis_builder::PresetId>) -> Option<Vec<u8>> {
+		fn get_preset(id: &Option<polkadot_sdk::sp_genesis_builder::PresetId>) -> Option<Vec<u8>> {
 			get_preset::<RuntimeGenesisConfig>(id, crate::genesis_config_presets::get_preset)
 		}
 
-		fn preset_names() -> Vec<sp_genesis_builder::PresetId> {
+		fn preset_names() -> Vec<polkadot_sdk::sp_genesis_builder::PresetId> {
 			crate::genesis_config_presets::preset_names()
 		}
 	}

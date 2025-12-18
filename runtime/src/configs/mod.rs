@@ -25,7 +25,7 @@
 
 // Substrate and Polkadot dependencies
 use polkadot_sdk::*;
-use frame_support::{
+use polkadot_sdk::frame_support::{
 	derive_impl, parameter_types,
 	traits::{ConstBool, ConstU128, ConstU32, ConstU64, ConstU8, VariantCountOf},
 	weights::{
@@ -33,7 +33,7 @@ use frame_support::{
 		IdentityFee, Weight,
 	},
 };
-use frame_system::limits::{BlockLength, BlockWeights};
+use polkadot_sdk::frame_system::limits::{BlockLength, BlockWeights};
 use pallet_transaction_payment::{ConstFeeMultiplier, FungibleAdapter, Multiplier};
 use polkadot_sdk::sp_consensus_aura::sr25519::AuthorityId as AuraId;
 use polkadot_sdk::sp_runtime::{traits::One, Perbill};
