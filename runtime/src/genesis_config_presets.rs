@@ -18,7 +18,7 @@
 use crate::{AccountId, BalancesConfig, RuntimeGenesisConfig, SudoConfig};
 use alloc::{vec, vec::Vec};
 use frame_support::build_struct_json_patch;
-use polkadot_sdk::pallet_aura;
+use polkadot_sdk::{pallet_aura, pallet_grandpa};
 use serde_json::Value;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
 use sp_consensus_grandpa::AuthorityId as GrandpaId;

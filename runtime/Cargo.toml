@@ -24,14 +24,7 @@ frame-system-benchmarking = { optional = true, workspace = true, default-feature
 frame-system-rpc-runtime-api = { workspace = true, default-features = false }
 frame-system = { workspace = true, default-features = false }
 frame-try-runtime = { optional = true, workspace = true, default-features = false }
-#pallet-aura = { workspace = true, default-features = false }
-pallet-balances = { workspace = true, default-features = false }
-pallet-grandpa = { workspace = true, default-features = false }
-pallet-sudo = { workspace = true, default-features = false }
 pallet-template = { workspace = true, default-features = false }
-pallet-timestamp = { workspace = true, default-features = false }
-pallet-transaction-payment-rpc-runtime-api = { workspace = true, default-features = false }
-pallet-transaction-payment = { workspace = true, default-features = false }
 scale-info = { features = ["derive", "serde"], workspace = true, default-features = false }
 serde_json = { workspace = true, default-features = false, features = ["alloc"] }
 sp-api = { workspace = true, default-features = false }
@@ -51,6 +44,12 @@ sp-version = { features = ["serde"], workspace = true, default-features = false 
 
 polkadot-sdk = { workspace = true, features = [
 	"pallet-aura",
+	"pallet-balances",
+	"pallet-grandpa",
+	"pallet-sudo",
+	"pallet-timestamp",
+	"pallet-transaction-payment",
+	"pallet-transaction-payment-rpc-runtime-api",
 	"frame-support",
 	"frame-system",
 	"runtime",
@@ -72,13 +71,7 @@ std = [
 	"frame-system-rpc-runtime-api/std",
 	"frame-system/std",
 	"frame-try-runtime?/std",
-	"pallet-balances/std",
-	"pallet-grandpa/std",
-	"pallet-sudo/std",
 	"pallet-template/std",
-	"pallet-timestamp/std",
-	"pallet-transaction-payment-rpc-runtime-api/std",
-	"pallet-transaction-payment/std",
 	"scale-info/std",
 	"serde_json/std",
 	"sp-api/std",
@@ -104,12 +97,7 @@ runtime-benchmarks = [
 	"frame-support/runtime-benchmarks",
 	"frame-system-benchmarking/runtime-benchmarks",
 	"frame-system/runtime-benchmarks",
-	"pallet-balances/runtime-benchmarks",
-	"pallet-grandpa/runtime-benchmarks",
-	"pallet-sudo/runtime-benchmarks",
 	"pallet-template/runtime-benchmarks",
-	"pallet-timestamp/runtime-benchmarks",
-	"pallet-transaction-payment/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
 	"polkadot-sdk/runtime-benchmarks",
 ]
@@ -119,12 +107,7 @@ try-runtime = [
 	"frame-support/try-runtime",
 	"frame-system/try-runtime",
 	"frame-try-runtime/try-runtime",
-	"pallet-balances/try-runtime",
-	"pallet-grandpa/try-runtime",
-	"pallet-sudo/try-runtime",
 	"pallet-template/try-runtime",
-	"pallet-timestamp/try-runtime",
-	"pallet-transaction-payment/try-runtime",
 	"sp-runtime/try-runtime",
 	"polkadot-sdk/try-runtime",
 ]
