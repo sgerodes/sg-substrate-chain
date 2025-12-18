@@ -24,7 +24,7 @@ frame-system-benchmarking = { optional = true, workspace = true, default-feature
 frame-system-rpc-runtime-api = { workspace = true, default-features = false }
 frame-system = { workspace = true, default-features = false }
 frame-try-runtime = { optional = true, workspace = true, default-features = false }
-pallet-aura = { workspace = true, default-features = false }
+#pallet-aura = { workspace = true, default-features = false }
 pallet-balances = { workspace = true, default-features = false }
 pallet-grandpa = { workspace = true, default-features = false }
 pallet-sudo = { workspace = true, default-features = false }
@@ -49,12 +49,20 @@ sp-storage = { workspace = true, default-features = false }
 sp-transaction-pool = { workspace = true, default-features = false }
 sp-version = { features = ["serde"], workspace = true, default-features = false }
 
+polkadot-sdk = { workspace = true, features = [
+	"pallet-aura",
+	"frame-support",
+	"frame-system",
+	"runtime",
+], default-features = false }
+
 [build-dependencies]
 substrate-wasm-builder = { optional = true, workspace = true, default-features = true }
 
 [features]
 default = ["std"]
 std = [
+	"polkadot-sdk/std",
 	"codec/std",
 	"frame-benchmarking?/std",
 	"frame-executive/std",
@@ -64,7 +72,6 @@ std = [
 	"frame-system-rpc-runtime-api/std",
 	"frame-system/std",
 	"frame-try-runtime?/std",
-	"pallet-aura/std",
 	"pallet-balances/std",
 	"pallet-grandpa/std",
 	"pallet-sudo/std",
@@ -104,6 +111,7 @@ runtime-benchmarks = [
 	"pallet-timestamp/runtime-benchmarks",
 	"pallet-transaction-payment/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
+	"polkadot-sdk/runtime-benchmarks",
 ]
 
 try-runtime = [
@@ -111,7 +119,6 @@ try-runtime = [
 	"frame-support/try-runtime",
 	"frame-system/try-runtime",
 	"frame-try-runtime/try-runtime",
-	"pallet-aura/try-runtime",
 	"pallet-balances/try-runtime",
 	"pallet-grandpa/try-runtime",
 	"pallet-sudo/try-runtime",
@@ -119,6 +126,7 @@ try-runtime = [
 	"pallet-timestamp/try-runtime",
 	"pallet-transaction-payment/try-runtime",
 	"sp-runtime/try-runtime",
+	"polkadot-sdk/try-runtime",
 ]
 
 # Enable the metadata hash generation.

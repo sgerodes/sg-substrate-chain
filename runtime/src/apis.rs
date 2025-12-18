@@ -24,6 +24,7 @@
 // For more information, please refer to <http://unlicense.org>
 
 // External crates imports
+use polkadot_sdk::*;
 use alloc::vec::Vec;
 use frame_support::{
 	genesis_builder_helper::{build_state, get_preset},
@@ -91,14 +92,14 @@ impl_runtime_apis! {
 		}
 
 		fn inherent_extrinsics(data: sp_inherents::InherentData) -> Vec<<Block as BlockT>::Extrinsic> {
-			data.create_extrinsics()
+			InherentDataExt::create_extrinsics(&data)
 		}
 
 		fn check_inherents(
 			block: Block,
 			data: sp_inherents::InherentData,
 		) -> sp_inherents::CheckInherentsResult {
-			data.check_extrinsics(&block)
+			InherentDataExt::check_extrinsics(&data, &block)
 		}
 	}
 
