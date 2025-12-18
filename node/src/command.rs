@@ -5,11 +5,11 @@ use crate::{
 	cli::{Cli, Subcommand},
 	service,
 };
-use frame_benchmarking_cli::{BenchmarkCmd, ExtrinsicFactory, SUBSTRATE_REFERENCE_HARDWARE};
-use sc_cli::SubstrateCli;
-use sc_service::PartialComponents;
+use polkadot_sdk::frame_benchmarking_cli::{BenchmarkCmd, ExtrinsicFactory, SUBSTRATE_REFERENCE_HARDWARE};
+use polkadot_sdk::sc_cli::SubstrateCli;
+use polkadot_sdk::sc_service::PartialComponents;
 use runtime::{Block, EXISTENTIAL_DEPOSIT};
-use sp_keyring::Sr25519Keyring;
+use polkadot_sdk::sp_keyring::Sr25519Keyring;
 
 impl SubstrateCli for Cli {
 	fn impl_name() -> String {
@@ -36,7 +36,7 @@ impl SubstrateCli for Cli {
 		2017
 	}
 
-	fn load_spec(&self, id: &str) -> Result<Box<dyn sc_service::ChainSpec>, String> {
+	fn load_spec(&self, id: &str) -> Result<Box<dyn polkadot_sdk::sc_service::ChainSpec>, String> {
 		Ok(match id {
 			"dev" => Box::new(chain_spec::development_chain_spec()?),
 			"" | "local" => Box::new(chain_spec::local_chain_spec()?),
@@ -47,7 +47,7 @@ impl SubstrateCli for Cli {
 }
 
 /// Parse and run command line arguments
-pub fn run() -> sc_cli::Result<()> {
+pub fn run() -> polkadot_sdk::sc_cli::Result<()> {
 	let cli = Cli::from_args();
 
 	match &cli.subcommand {
@@ -96,7 +96,7 @@ pub fn run() -> sc_cli::Result<()> {
 				let PartialComponents { client, task_manager, backend, .. } =
 					service::new_partial(&config)?;
 				let aux_revert = Box::new(|client, _, blocks| {
-					sc_consensus_grandpa::revert(client, blocks)?;
+					polkadot_sdk::sc_consensus_grandpa::revert(client, blocks)?;
 					Ok(())
 				});
 				Ok((cmd.run(client, backend, Some(aux_revert)), task_manager))
@@ -118,7 +118,7 @@ pub fn run() -> sc_cli::Result<()> {
 							);
 						}
 
-						cmd.run_with_spec::<sp_runtime::traits::HashingFor<Block>, ()>(Some(
+						cmd.run_with_spec::<polkadot_sdk::sp_runtime::traits::HashingFor<Block>, ()>(Some(
 							config.chain_spec,
 						))
 					},
@@ -180,16 +180,16 @@ pub fn run() -> sc_cli::Result<()> {
 			let runner = cli.create_runner(&cli.run)?;
 			runner.run_node_until_exit(|config| async move {
 				match config.network.network_backend {
-					sc_network::config::NetworkBackendType::Libp2p => service::new_full::<
-						sc_network::NetworkWorker<
+					polkadot_sdk::sc_network::config::NetworkBackendType::Libp2p => service::new_full::<
+						polkadot_sdk::sc_network::NetworkWorker<
 							runtime::opaque::Block,
-							<runtime::opaque::Block as sp_runtime::traits::Block>::Hash,
+							<runtime::opaque::Block as polkadot_sdk::sp_runtime::traits::Block>::Hash,
 						>,
 					>(config)
-					.map_err(sc_cli::Error::Service),
-					sc_network::config::NetworkBackendType::Litep2p =>
-						service::new_full::<sc_network::Litep2pNetworkBackend>(config)
-							.map_err(sc_cli::Error::Service),
+					.map_err(polkadot_sdk::sc_cli::Error::Service),
+					polkadot_sdk::sc_network::config::NetworkBackendType::Litep2p =>
+						service::new_full::<polkadot_sdk::sc_network::Litep2pNetworkBackend>(config)
+							.map_err(polkadot_sdk::sc_cli::Error::Service),
 				}
 			})
 		},

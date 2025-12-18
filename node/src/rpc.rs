@@ -8,11 +8,11 @@
 use std::sync::Arc;
 
 use jsonrpsee::RpcModule;
-use sc_transaction_pool_api::TransactionPool;
+use polkadot_sdk::sc_transaction_pool_api::TransactionPool;
 use sg_solochain_runtime::{opaque::Block, AccountId, Balance, Nonce};
-use sp_api::ProvideRuntimeApi;
-use sp_block_builder::BlockBuilder;
-use sp_blockchain::{Error as BlockChainError, HeaderBackend, HeaderMetadata};
+use polkadot_sdk::sp_api::ProvideRuntimeApi;
+use polkadot_sdk::sp_block_builder::BlockBuilder;
+use polkadot_sdk::sp_blockchain::{Error as BlockChainError, HeaderBackend, HeaderMetadata};
 
 /// Full client dependencies.
 pub struct FullDeps<C, P> {
@@ -30,13 +30,13 @@ where
 	C: ProvideRuntimeApi<Block>,
 	C: HeaderBackend<Block> + HeaderMetadata<Block, Error = BlockChainError> + 'static,
 	C: Send + Sync + 'static,
-	C::Api: substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Nonce>,
-	C::Api: pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
+	C::Api: polkadot_sdk::substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Nonce>,
+	C::Api: polkadot_sdk::pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
 	C::Api: BlockBuilder<Block>,
 	P: TransactionPool + 'static,
 {
-	use pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApiServer};
-	use substrate_frame_rpc_system::{System, SystemApiServer};
+	use polkadot_sdk::pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApiServer};
+	use polkadot_sdk::substrate_frame_rpc_system::{System, SystemApiServer};
 
 	let mut module = RpcModule::new(());
 	let FullDeps { client, pool } = deps;
