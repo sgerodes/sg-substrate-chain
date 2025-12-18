@@ -79,10 +79,7 @@ pub mod pallet {
     /// These types are defined generically and made concrete when the pallet is declared in the
     /// `runtime/src/lib.rs` file of your chain.
     #[pallet::config]
-    pub trait Config: polkadot_sdk::frame_system::Config {
-        /// The overarching runtime event type.
-        type RuntimeEvent: From<Event<Self>>
-            + IsType<<Self as polkadot_sdk::frame_system::Config>::RuntimeEvent>;
+    pub trait Config: polkadot_sdk::frame_system::Config<RuntimeEvent: From<Event<Self>>> {
         /// A type representing the weights required by the dispatchables of this pallet.
         type WeightInfo: WeightInfo;
     }
