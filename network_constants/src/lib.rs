@@ -16,4 +16,3 @@ pub const EXISTENTIAL_DEPOSIT: u128 = UNIT / 1_000_000;
 // NOTE: Currently it is not possible to change the slot duration after the chain has started.
 // Attempting to do so will brick block production.
 pub const MILLI_SECS_PER_BLOCK: u64 = 6000;
-

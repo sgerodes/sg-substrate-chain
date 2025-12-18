@@ -1,7 +1,7 @@
-use polkadot_sdk::sp_version::RuntimeVersion;
+use crate::apis;
 #[cfg(feature = "std")]
 use polkadot_sdk::sp_version::NativeVersion;
-use crate::apis;
+use polkadot_sdk::sp_version::RuntimeVersion;
 
 // To learn more about runtime versioning, see:
 // https://docs.substrate.io/main-docs/build/upgrade#runtime-versioning
@@ -26,5 +26,8 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 #[cfg(feature = "std")]
 #[allow(dead_code)]
 pub fn native_version() -> NativeVersion {
-    NativeVersion { runtime_version: VERSION, can_author_with: Default::default() }
+    NativeVersion {
+        runtime_version: VERSION,
+        can_author_with: Default::default(),
+    }
 }
