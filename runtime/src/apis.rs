@@ -31,15 +31,15 @@ use frame_support::{
 	weights::Weight,
 };
 use pallet_grandpa::AuthorityId as GrandpaId;
-use sp_api::impl_runtime_apis;
-use sp_consensus_aura::sr25519::AuthorityId as AuraId;
-use sp_core::{crypto::KeyTypeId, OpaqueMetadata};
-use sp_runtime::{
+use polkadot_sdk::sp_api::impl_runtime_apis;
+use polkadot_sdk::sp_consensus_aura::sr25519::AuthorityId as AuraId;
+use polkadot_sdk::sp_core::{crypto::KeyTypeId, OpaqueMetadata};
+use polkadot_sdk::sp_runtime::{
 	traits::{Block as BlockT, NumberFor},
 	transaction_validity::{TransactionSource, TransactionValidity},
 	ApplyExtrinsicResult,
 };
-use sp_version::RuntimeVersion;
+use polkadot_sdk::sp_version::RuntimeVersion;
 
 // Local module imports
 use super::{

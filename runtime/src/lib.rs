@@ -12,12 +12,12 @@ mod version;
 extern crate alloc;
 pub use version::VERSION;
 use alloc::vec::Vec;
-use sp_runtime::{
+use polkadot_sdk::*;
+use polkadot_sdk::sp_runtime::{
 	generic, impl_opaque_keys,
 	traits::{BlakeTwo256, IdentifyAccount, Verify},
 	MultiAddress, MultiSignature,
 };
-use polkadot_sdk::*;
 
 pub use frame_system::Call as SystemCall;
 pub use pallet_balances::Call as BalancesCall;

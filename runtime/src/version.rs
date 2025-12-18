@@ -1,11 +1,11 @@
+use polkadot_sdk::sp_version::RuntimeVersion;
 #[cfg(feature = "std")]
-use sp_version::NativeVersion;
-use sp_version::RuntimeVersion;
+use polkadot_sdk::sp_version::NativeVersion;
 use crate::apis;
 
 // To learn more about runtime versioning, see:
 // https://docs.substrate.io/main-docs/build/upgrade#runtime-versioning
-#[sp_version::runtime_version]
+#[polkadot_sdk::sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
     spec_name: alloc::borrow::Cow::Borrowed("solochain-template-runtime"),
     impl_name: alloc::borrow::Cow::Borrowed("solochain-template-runtime"),

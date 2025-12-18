@@ -17,13 +17,13 @@
 
 use crate::{AccountId, BalancesConfig, RuntimeGenesisConfig, SudoConfig};
 use alloc::{vec, vec::Vec};
-use frame_support::build_struct_json_patch;
+use polkadot_sdk::frame_support::build_struct_json_patch;
 use polkadot_sdk::{pallet_aura, pallet_grandpa};
 use serde_json::Value;
-use sp_consensus_aura::sr25519::AuthorityId as AuraId;
-use sp_consensus_grandpa::AuthorityId as GrandpaId;
-use sp_genesis_builder::{self, PresetId};
-use sp_keyring::Sr25519Keyring;
+use polkadot_sdk::sp_consensus_aura::sr25519::AuthorityId as AuraId;
+use polkadot_sdk::sp_consensus_grandpa::AuthorityId as GrandpaId;
+use polkadot_sdk::sp_genesis_builder::PresetId;
+use polkadot_sdk::sp_keyring::{Ed25519Keyring, Sr25519Keyring};
 
 // Returns the genesis config presets populated with given parameters.
 fn testnet_genesis(
@@ -53,8 +53,8 @@ fn testnet_genesis(
 pub fn development_config_genesis() -> Value {
 	testnet_genesis(
 		vec![(
-			sp_keyring::Sr25519Keyring::Alice.public().into(),
-			sp_keyring::Ed25519Keyring::Alice.public().into(),
+			Sr25519Keyring::Alice.public().into(),
+			Ed25519Keyring::Alice.public().into(),
 		)],
 		vec![
 			Sr25519Keyring::Alice.to_account_id(),
@@ -62,7 +62,7 @@ pub fn development_config_genesis() -> Value {
 			Sr25519Keyring::AliceStash.to_account_id(),
 			Sr25519Keyring::BobStash.to_account_id(),
 		],
-		sp_keyring::Sr25519Keyring::Alice.to_account_id(),
+		Sr25519Keyring::Alice.to_account_id(),
 	)
 }
 
@@ -71,12 +71,12 @@ pub fn local_config_genesis() -> Value {
 	testnet_genesis(
 		vec![
 			(
-				sp_keyring::Sr25519Keyring::Alice.public().into(),
-				sp_keyring::Ed25519Keyring::Alice.public().into(),
+				Sr25519Keyring::Alice.public().into(),
+				Ed25519Keyring::Alice.public().into(),
 			),
 			(
-				sp_keyring::Sr25519Keyring::Bob.public().into(),
-				sp_keyring::Ed25519Keyring::Bob.public().into(),
+				Sr25519Keyring::Bob.public().into(),
+				Ed25519Keyring::Bob.public().into(),
 			),
 		],
 		Sr25519Keyring::iter()
@@ -90,8 +90,8 @@ pub fn local_config_genesis() -> Value {
 /// Provides the JSON representation of predefined genesis config for given `id`.
 pub fn get_preset(id: &PresetId) -> Option<Vec<u8>> {
 	let patch = match id.as_ref() {
-		sp_genesis_builder::DEV_RUNTIME_PRESET => development_config_genesis(),
-		sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET => local_config_genesis(),
+		polkadot_sdk::sp_genesis_builder::DEV_RUNTIME_PRESET => development_config_genesis(),
+		polkadot_sdk::sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET => local_config_genesis(),
 		_ => return None,
 	};
 	Some(
@@ -104,7 +104,7 @@ pub fn get_preset(id: &PresetId) -> Option<Vec<u8>> {
 /// List of supported presets.
 pub fn preset_names() -> Vec<PresetId> {
 	vec![
-		PresetId::from(sp_genesis_builder::DEV_RUNTIME_PRESET),
-		PresetId::from(sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET),
+		PresetId::from(polkadot_sdk::sp_genesis_builder::DEV_RUNTIME_PRESET),
+		PresetId::from(polkadot_sdk::sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET),
 	]
 }

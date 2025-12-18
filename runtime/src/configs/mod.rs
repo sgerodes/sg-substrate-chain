@@ -35,9 +35,9 @@ use frame_support::{
 };
 use frame_system::limits::{BlockLength, BlockWeights};
 use pallet_transaction_payment::{ConstFeeMultiplier, FungibleAdapter, Multiplier};
-use sp_consensus_aura::sr25519::AuthorityId as AuraId;
-use sp_runtime::{traits::One, Perbill};
-use sp_version::RuntimeVersion;
+use polkadot_sdk::sp_consensus_aura::sr25519::AuthorityId as AuraId;
+use polkadot_sdk::sp_runtime::{traits::One, Perbill};
+use polkadot_sdk::sp_version::RuntimeVersion;
 
 // Local module imports
 use super::{
