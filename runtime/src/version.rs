@@ -7,8 +7,8 @@ use polkadot_sdk::sp_version::RuntimeVersion;
 // https://docs.substrate.io/main-docs/build/upgrade#runtime-versioning
 #[polkadot_sdk::sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-    spec_name: alloc::borrow::Cow::Borrowed("solochain-template-runtime"),
-    impl_name: alloc::borrow::Cow::Borrowed("solochain-template-runtime"),
+    spec_name: alloc::borrow::Cow::Borrowed("sg-solochain-runtime"),
+    impl_name: alloc::borrow::Cow::Borrowed("sg-solochain-runtime"),
     authoring_version: 1,
     // The version of the runtime specification. A full node will not attempt to use its native
     //   runtime in substitute for the on-chain Wasm runtime unless all of `spec_name`,
