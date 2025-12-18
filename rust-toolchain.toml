@@ -1,6 +1,6 @@
 [toolchain]
 #channel = "stable"
-channel = "1.88.0"
+channel = "1.92.0"
 components = [
 	"cargo",
 	"clippy",
