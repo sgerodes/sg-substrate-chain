@@ -5,7 +5,7 @@ use super::*;
 #[allow(unused)]
 use crate::Pallet as Template;
 use frame_benchmarking::v2::*;
-use frame_system::RawOrigin;
+use polkadot_sdk::frame_system::RawOrigin;
 
 #[benchmarks]
 mod benchmarks {

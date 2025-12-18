@@ -1,10 +1,10 @@
 use crate as pallet_template;
-use frame_support::derive_impl;
-use sp_runtime::BuildStorage;
+use polkadot_sdk::frame_support::derive_impl;
+use polkadot_sdk::sp_runtime::BuildStorage;
 
-type Block = frame_system::mocking::MockBlock<Test>;
+type Block = polkadot_sdk::frame_system::mocking::MockBlock<Test>;
 
-#[frame_support::runtime]
+#[polkadot_sdk::frame_support::runtime]
 mod runtime {
 	// The main runtime
 	#[runtime::runtime]
@@ -24,14 +24,14 @@ mod runtime {
 	pub struct Test;
 
 	#[runtime::pallet_index(0)]
-	pub type System = frame_system::Pallet<Test>;
+	pub type System = polkadot_sdk::frame_system::Pallet<Test>;
 
 	#[runtime::pallet_index(1)]
 	pub type Template = pallet_template::Pallet<Test>;
 }
 
-#[derive_impl(frame_system::config_preludes::TestDefaultConfig)]
-impl frame_system::Config for Test {
+#[derive_impl(polkadot_sdk::frame_system::config_preludes::TestDefaultConfig)]
+impl polkadot_sdk::frame_system::Config for Test {
 	type Block = Block;
 }
 
@@ -41,6 +41,6 @@ impl pallet_template::Config for Test {
 }
 
 // Build genesis storage according to the mock runtime.
-pub fn new_test_ext() -> sp_io::TestExternalities {
-	frame_system::GenesisConfig::<Test>::default().build_storage().unwrap().into()
+pub fn new_test_ext() -> polkadot_sdk::sp_io::TestExternalities {
+	polkadot_sdk::frame_system::GenesisConfig::<Test>::default().build_storage().unwrap().into()
 }
