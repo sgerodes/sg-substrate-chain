@@ -1,5 +1,5 @@
 [workspace]
-members = ["node", "pallets/template", "runtime"]
+members = ["node", "runtime", "pallets/template"]
 resolver = "2"
 
 [workspace.package]
@@ -46,7 +46,6 @@ zero-prefixed-literal = { level = "allow", priority = 2 }            # 00_1000_0
 [workspace.dependencies]
 network_constants = { path = "network_constants", default-features = false }
 sg-solochain-runtime = { path = "./runtime" }
-#sg-solochain-node = { path = "./node" }
 
 pallet-template = { path = "./pallets/template", default-features = false }
 
